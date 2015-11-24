@@ -10,7 +10,7 @@ R::setup( 'sqlite:./db/dbfile.db' );
 $router = new Router();
 
 /**
- * Fetch all posts from the server
+ * Fetch all posts
  */
 $router->route('posts-list', '/posts', function() {
     $result = [];
@@ -23,13 +23,30 @@ $router->route('posts-list', '/posts', function() {
 })
 
 /**
- * Fetch a single post from the server
+ * Fetch a single post
  */
 ->route('post', '/posts/:id', function($id) {
     $post = R::load( 'post', $id );
     return json_encode($post->export());
-});
+})
+
+/**
+ * Add a single post
+ */
+->route('add-post', '/posts', function() {
+    $post = R::dispense('post');
+    
+    $data = json_decode(file_get_contents("php://input"), true);
+    if ($data) {
+        $post->title = $data['post']['title'];
+        $post->content = $data['post']['content'];
+        
+        R::store($post);
+    }
+    
+    return json_encode($post->export());
+}, 'POST');
 
 
 header('Content-Type: application/json');
-echo $router->match($_SERVER['REQUEST_URI']);
+echo $router->match($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
