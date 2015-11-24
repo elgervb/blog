@@ -1,0 +1,46 @@
+
+.fill-height {
+  height: 100%;
+}
+
+.admin-posts {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  
+  .title {
+    text-align: center;
+  }
+ 
+ .btn-add-post {
+   display: block;
+   margin: 0 auto;
+   width: 150px;
+ }
+ 
+ .post-list {
+   background-color: #181818;
+   color: white;
+   max-width: 350px;
+   width: 25%;
+   
+   nav {
+     margin-top: 2rem;
+     
+     a{
+      color: white;
+      display: block;
+      padding: .5rem .5rem;
+      
+      &:hover{
+        background-color: $white-regular;
+        color: $black-regular;
+      }
+    }
+   }
+ }
+ .admin-posts-content {
+   padding: 0 0 0 1rem;
+   width: 100%;
+ }
+}

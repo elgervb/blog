@@ -2,7 +2,7 @@
 /**
  * Main blog controller
  */
-angular.module('blog').controller('AddPostsController', ($scope, $log) => {
+angular.module('blog').controller('AddPostController', ($scope, $log) => {
 
   $scope.isSubmitted = false;
   

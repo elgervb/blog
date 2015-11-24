@@ -1,7 +1,7 @@
 
 <h1> Add Post</h1>
 
-<form name=form novalidate>
+<form name="form" novalidate>
   
   <div class="field">
      <label for="postTitle">title</label>
@@ -20,7 +20,7 @@
   </div>
   
   <div class="field">
-    <button ng-click="addPost()" ng-disabled="form.$invalid">add post</button>
+    <button class="btn" ng-click="addPost()" ng-disabled="form.$invalid">add post</button>
   </div>
   
 </form>
