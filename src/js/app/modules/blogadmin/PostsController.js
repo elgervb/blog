@@ -4,7 +4,7 @@
  */
 angular.module('blog').controller('PostsController', ($scope, $log, PostsService) => {
   
-  PostsService.get().then((res) => {
+  PostsService.list().then((res) => {
     $scope.posts = res.data;
   }).catch((res) => {
     $log.error(res);

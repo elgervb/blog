@@ -24,16 +24,21 @@ angular.module('blog', ['ui.router', 'ngMessages', 'templates'])
       url: '/admin',
       template: '<div ui-view class="fill-height"></div>'
     })
-    .state('admin.posts', {
-      url: '/posts',
-      templateUrl: 'modules/blogadmin/posts.html',
-      controller: 'PostsController'
-    })
-    .state('admin.posts.add', {
-      url: '/add',
-      templateUrl: 'modules/blogadmin/addPosts.html',
-      controller: 'AddPostController'
-    });
+      .state('admin.posts', {
+        url: '/posts',
+        templateUrl: 'modules/blogadmin/posts.html',
+        controller: 'PostsController'
+      })
+        .state('admin.posts.edit', {
+          url: '/edit/:postId',
+          templateUrl: 'modules/blogadmin/editPost.html',
+          controller: 'EditPostController'
+        })
+        .state('admin.posts.add', {
+          url: '/add',
+          templateUrl: 'modules/blogadmin/addPosts.html',
+          controller: 'AddPostController'
+        });
 
   $locationProvider.html5Mode('true');
 
