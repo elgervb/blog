@@ -1,20 +1,26 @@
 
 <h1> Add Post</h1>
 
-<form name=form>
+<form name=form novalidate>
   
   <div class="field">
-     <label for="post_title">title</label>
-     <input type="text" id="post_title" ng-model="post.title" />
+     <label for="postTitle">title</label>
+     <input type="text" id="postTitle" name="postTitle" ng-model="post.title" required />
+     <div ng-messages="form.postTitle.$error" ng-show="form.postTitle.$touched || isSubmitted">
+       <div ng-message="required">This field is required</div>
+     </div>
   </div>
   
   <div class="field">
-     <label for="post_content">post</label>
-     <textarea id="post_content" ng-model="post.content"></textarea>
+     <label for="postContent">post</label>
+     <textarea id="postContent" name="postContent" ng-model="post.content" required></textarea>
+     <div ng-messages="form.postContent.$error" ng-show="form.postContent.$touched || isSubmitted">
+       <div ng-message="required">This field is required</div>
+     </div>
   </div>
   
   <div class="field">
-    <button ng-click="addPost()">add post</button>
+    <button ng-click="addPost()" ng-disabled="form.$invalid">add post</button>
   </div>
   
 </form>

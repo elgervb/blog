@@ -2,7 +2,7 @@
 /**
  * Declaration of the main skeleton app
  */
-angular.module('blog', ['ui.router', 'templates'])
+angular.module('blog', ['ui.router', 'ngMessages', 'templates'])
 
 /**
  * Configuration: state your routes and other configuration items here
