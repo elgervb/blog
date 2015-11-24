@@ -32,9 +32,13 @@
       display: block;
       padding: .5rem .5rem;
       
-      &:hover{
+      &:hover, &.selected{
         background-color: $white-regular;
         color: $black-regular;
+      }
+      
+      &.selected:hover{
+        background-color: darken($white-regular, 10%);
       }
     }
    }
