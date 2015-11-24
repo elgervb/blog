@@ -8,6 +8,13 @@ angular.module('blog').service('PostsService', ($http, BaseUrl) => {
         data: {post}
       });
     },
+    edit: (post) => {
+      return $http({
+        method: 'PUT',
+        url: `${BaseUrl}/posts/${post.id}`,
+        data: {post}
+      });
+    },
     get: (postId) => {
       return $http({
         method: 'GET',

@@ -16,6 +16,14 @@ angular.module('blog').controller('EditPostController', ($scope, $log, $statePar
   
   $scope.editPost = () => {
     $scope.isSubmitted = true;
+    
+     PostsService.edit($scope.post).then((res) => {
+      $log.info(`add post ${res.data.title}`);
+    })
+    .catch(() => {
+      $log.error('failed to add post');
+    });
+    
     $log.info('edit post');
   };
   

@@ -40,12 +40,33 @@ $router->route('posts-list', '/posts', function() {
     if ($data) {
         $post->title = $data['post']['title'];
         $post->content = $data['post']['content'];
+        $post->created = R::isoDateTime(time());
         
         R::store($post);
     }
     
     return json_encode($post->export());
-}, 'POST');
+}, 'POST')
+/**
+ * Edit a single post
+ */
+->route('edit-post', '/posts/:id', function($id) {
+    $post = R::load( 'post', $id );
+    
+    if ($post->id != $id) {
+        return;
+    }
+
+    $data = json_decode(file_get_contents("php://input"), true);
+    if ($data) {
+        $post->title = $data['post']['title'];
+        $post->content = $data['post']['content'];
+
+        R::store($post);
+    }
+
+    return json_encode($post->export());
+}, 'PUT');
 
 
 header('Content-Type: application/json');
