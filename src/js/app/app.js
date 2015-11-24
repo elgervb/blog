@@ -2,7 +2,7 @@
 /**
  * Declaration of the main skeleton app
  */
-angular.module('skeleton', ['ui.router', 'templates'])
+angular.module('blog', ['ui.router', 'templates'])
 
 /**
  * Configuration: state your routes and other configuration items here
@@ -20,8 +20,8 @@ angular.module('skeleton', ['ui.router', 'templates'])
     })
     .state('add-post', {
       url: '/post/add',
-      templateUrl: 'modules/main/main.html',
-      controller: 'MainController'
+      templateUrl: 'modules/blog/addPosts.html',
+      controller: 'AddPostsController'
     });
 
   $locationProvider.html5Mode('true');
