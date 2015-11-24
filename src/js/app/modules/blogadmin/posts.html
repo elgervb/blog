@@ -7,9 +7,7 @@
     <a class="btn-add-post" ui-sref="admin.posts.add">add new post</a>
     <nav>
       <ul>
-        <li><a href="#">post1</a></li>
-        <li><a href="#">post2</a></li>
-        <li><a href="#">post3</a></li>
+        <li ng-repeat="post in posts"><a href="#">{{post.title}}</a></li>
       </ul>
     </nav>
   </div>

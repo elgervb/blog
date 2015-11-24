@@ -37,4 +37,6 @@ angular.module('blog', ['ui.router', 'ngMessages', 'templates'])
 
   $locationProvider.html5Mode('true');
 
-});
+})
+
+.constant('BaseUrl', '/api'); // proxy to http://localhost:4011 in gulpfile in devmode
