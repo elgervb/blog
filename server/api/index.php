@@ -8,7 +8,11 @@ include __DIR__ . '/../vendor/autoload.php';
 R::setup( 'sqlite:./db/dbfile.db' );
 
 $router = new Router();
-$router->route('post-list', '/posts', function() {
+
+/**
+ * Fetch all posts from the server
+ */
+$router->route('posts-list', '/posts', function() {
     $result = [];
     $posts = R::find('post');
     /* @var $post RedBeanPHP\OODBBean */
@@ -16,27 +20,16 @@ $router->route('post-list', '/posts', function() {
         $result[] = $post->export();
     }
     return json_encode($result);
+})
+
+/**
+ * Fetch a single post from the server
+ */
+->route('post', '/posts/:id', function($id) {
+    $post = R::load( 'post', $id );
+    return json_encode($post->export());
 });
-// $router->route('root', '/', function() {
-    
-//     $post = R::dispense('post');
-//     $post->title = "blogPost3";
-//     $post->content = "Blog post contents3";
-    
-//     $comment1 = R::dispense('comment');
-//     $comment1->comment = 'This is a nice comment';
-//     $comment2 = R::dispense('comment');
-//     $comment2->comment = 'This is also a nice comment';
-//     $post->xownCommentList[] = $comment1;
-//     $post->xownCommentList[] = $comment2;
-    
-//     R::store($post);
-//     R::close();
-    
-//     echo "<h1>{$post->title}</h1>";
-//     echo "<p>{$post->contents}</p>";
-//     foreach ($post->ownCommentList as $comment) {echo $comment->comment . '<br />';}
-// });
+
 
 header('Content-Type: application/json');
 echo $router->match($_SERVER['REQUEST_URI']);
