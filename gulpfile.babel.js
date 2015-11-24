@@ -30,9 +30,9 @@ gulp.task('browser-sync', ['watch'], () => {
   // Watch any files in dist/*, reload on change
   gulp.watch([`${settings.dist}**/*`, `!${settings.dist}**/*.css`]).on('change', reload);
   
-  // proxy settings for /redirect
-  let proxyOptions = url.parse('http://localhost:8080/redirect');
-  proxyOptions.route = '/redirect';
+  // proxy settings for /api
+  let proxyOptions = url.parse('http://localhost:4011');
+  proxyOptions.route = '/api';
 
   return browserSync({
     browser: ['google chrome'],
