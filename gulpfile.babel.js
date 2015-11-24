@@ -117,7 +117,7 @@ gulp.task('copy-template', () => {
   let tplCache = require('gulp-angular-templatecache');
   
   // copy all html && json
-  return gulp.src([`${settings.src}js/app/**/*.html`, `${settings.src}js/app/**/*.json`])
+  return gulp.src([`${settings.src}js/app/**/*.html`])
   .pipe(plumber())
   .pipe(htmlhint({
     htmlhintrc: '.htmlhintrc'
@@ -129,7 +129,7 @@ gulp.task('copy-template', () => {
     removeComments: true
   }))
   .pipe(tplCache({standalone: true}))
-  .pipe(cache(gulp.dest('dist/js')));
+  .pipe(gulp.dest('dist/js'));
 });
 
 /**
@@ -443,7 +443,7 @@ gulp.task('watch', () => {
   gulp.watch(`${settings.src}index.html`, ['copy-index']);
 
   // watch html files
-  gulp.watch(`${settings.src}**/*.html`, ['copy-template']);
+  gulp.watch(`${settings.src}js/app/**/*.html`, ['copy-template']);
 
   // watch fonts
   gulp.watch(`${settings.src}fonts/**`, ['copy-fonts']);
