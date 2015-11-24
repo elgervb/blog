@@ -26,18 +26,18 @@ angular.module('blog', ['ui.router', 'ngMessages', 'templates'])
     })
       .state('admin.posts', {
         url: '/posts',
-        templateUrl: 'modules/blogadmin/posts.html',
+        templateUrl: 'modules/blogadmin/PostsController.html',
         controller: 'PostsController'
       })
-        .state('admin.posts.edit', {
-          url: '/edit/:postId',
-          templateUrl: 'modules/blogadmin/editPost.html',
-          controller: 'EditPostController'
-        })
         .state('admin.posts.add', {
           url: '/add',
-          templateUrl: 'modules/blogadmin/addPosts.html',
+          templateUrl: 'modules/blogadmin/AddPostController.html',
           controller: 'AddPostController'
+        })
+        .state('admin.posts.edit', {
+          url: '/edit/:postId',
+          templateUrl: 'modules/blogadmin/EditPostController.html',
+          controller: 'EditPostController'
         });
 
   $locationProvider.html5Mode('true');
