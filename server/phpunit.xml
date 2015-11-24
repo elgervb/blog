@@ -3,7 +3,7 @@
 <phpunit bootstrap="./tests/PHPUnitBootstrap.php" colors="true">
 
     <testsuites>
-        <testsuite name="PHP Router Test Suite">
+        <testsuite name="Blog Admin Test Suite">
             <directory>./tests/</directory>
         </testsuite>
     </testsuites>

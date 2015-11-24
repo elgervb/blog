@@ -1,5 +1,5 @@
 {
-	"name" : "test",
+	"name" : "blog-admin",
 	"type" : "library",
 	"authors" : [{
 			"name" : "Elger van Boxtel",
@@ -24,7 +24,7 @@
 	},
 	"autoload" : {
 		"psr-0" : {
-			"router" : "src"
+			
 		}
 	},
 	"support" : {

@@ -13,7 +13,7 @@ var reload  = browserSync.reload;
 */
 gulp.task('serve', function() {
 	return require('gulp-connect-php').server({
-		base: './example',
+		base: './api',
 		port: 4011,
 		keepalive: true
 	});
@@ -53,7 +53,7 @@ gulp.task('test', function() {
  */
 gulp.task('test:watch', function(){
 	var path = require('path');
-    gulp.watch(['./src/**/*.php', './tests/**/*.php'])
+    gulp.watch(['./api/**/*.php', './tests/**/*.php'])
         .on("change", function(file) {
         	var filename = path.basename(file.path, '.php');
         	console.log(filename + ' has changed. Running tests...');
