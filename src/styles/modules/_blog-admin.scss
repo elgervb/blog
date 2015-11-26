@@ -27,20 +27,37 @@
    nav {
      margin-top: 2rem;
      
-     a{
+     a {
       color: white;
       display: block;
       padding: .5rem .5rem;
       
-      &:hover, &.selected{
+      &:hover, &.selected {
         background-color: $white-regular;
         color: $black-regular;
+        
+        .from-now {
+          color: lighten($black-regular, 20%);
+        }
       }
       
-      &.selected:hover{
+      &.selected:hover {
         background-color: darken($white-regular, 10%);
       }
     }
+   }
+   
+   .from-now {
+     color: darken($white-regular, 20%);
+     font-size: .8em;
+     float: right;
+   }
+   
+   .list-post-details {
+     border-bottom: 1px solid darken($white-regular, 20%);
+     color: $white-darker;
+     font-size: .8em;
+     padding: .5rem .5rem 1rem 1rem;
    }
  }
  .admin-posts-content {

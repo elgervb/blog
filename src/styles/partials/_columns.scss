@@ -1,5 +1,6 @@
 /* columns */
 [class*='col-']{
+  box-sizing: border-box;
   float: left;
   padding-right: 1%;
 }
