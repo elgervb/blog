@@ -14,6 +14,6 @@ angular.module('blog').controller('PostsController', ($scope, $log, PostsService
    * Listen for selection changes and make changes to the blog menu
    */
   $scope.$on('selectionChanged', (event, args) => {
-    $scope.selected = args.postId
+    $scope.selected = args.postId;
   });
 });
