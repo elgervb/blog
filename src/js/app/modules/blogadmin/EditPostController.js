@@ -14,11 +14,13 @@ angular.module('blog').controller('EditPostController', ($scope, $log, $statePar
     $log.error(res);
   });
   
-  $scope.editPost = () => {
+  $scope.editPost = (post, form) => {
     $scope.isSubmitted = true;
     
-     PostsService.edit($scope.post).then((res) => {
+    PostsService.edit(post).then((res) => {
       $log.info(`add post ${res.data.title}`);
+      $scope.post = post;
+      form.$setPristine();
     })
     .catch(() => {
       $log.error('failed to add post');
