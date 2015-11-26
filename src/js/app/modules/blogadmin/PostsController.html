@@ -1,5 +1,4 @@
 
-
 <section class="admin-posts">
 
   <div class="post-list">
@@ -8,7 +7,15 @@
     <nav>
       <ul>
         <li ng-repeat="post in posts" >
-          <a ui-sref="admin.posts.edit({postId: post.id})" ng-class="{selected: selected==post.id}">{{post.title}}</a>
+          <a ui-sref="admin.posts.edit({postId: post.id})" ng-class="{selected: selected==post.id}">
+            {{post.title}}  <span class="from-now">{{post.created | momentFromNow}}</span>
+          </a>
+          <div ng-if="selected==post.id" class="list-post-details">
+            <ul>
+              <li>Content: {{post.content | countChars}} chars</li>
+              <li>Created on: {{post.created | momentFormat}}</li>
+            </ul>
+          </div>
         </li>
       </ul>
     </nav>
