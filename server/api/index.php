@@ -6,8 +6,11 @@ include __DIR__ . '/../vendor/autoload.php';
 
 // setup database
 R::setup( 'sqlite:./db/dbfile.db' );
+date_default_timezone_set("UTC");
+ini_set('date.timezone', 'UTC');
 
 $router = new Router();
+
 
 /**
  * Fetch all posts
