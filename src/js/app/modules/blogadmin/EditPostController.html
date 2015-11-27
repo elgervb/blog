@@ -1,8 +1,12 @@
-
-<h1> Edit {{post.title}}</h1>
-
 <div class="row">
-  <post-form post="post" submit="editPost" class="col-50"></post-form>
   
-  <div class="col-50" render-template="post.content"></div>
+  <div class="col-50">
+    <h1> Edit </h1>
+    <post-form post="post" submit="editPost" class="col-50"></post-form>
+  </div>
+  
+  <div class="col-50">
+    <h1>{{post.title}}</h1>
+    <div render-template="post.content"></div>
+  </div>
 </div>
