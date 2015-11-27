@@ -1,0 +1,86 @@
+$animation-duration: .3s !default;
+$animation-easing: ease-in !default;
+
+$black-regular: #3F4751 !default;
+$grey-dark: #989898 !default;
+$white-regular: #FFFFFF !default;
+
+.msgbox {
+  background-color: $white-regular;
+  box-shadow: 0 0 0.5rem rgba($black-regular, .4);
+  display: block;
+  margin-bottom: 0.8rem;
+  padding: 1.4rem;
+  position: relative;
+
+  h4, .title {
+    font-size: 1.8em;
+    font-weight: bold;
+    letter-spacing: 0.04em;
+    margin: 0 0 1.5rem;
+    padding: 0.2rem 0;
+  }
+
+  p {
+    font-size: 1.2em;
+  }
+  
+  &.pagebox {
+    animation: appear $animation-duration $animation-easing 0s;
+    left: 25%;
+    margin: .8rem 0;
+    padding: 1.4rem .8rem;
+    position: fixed;
+    text-align: center;
+    top: 2.5rem;
+    width: 50%;
+    min-width: 320px;
+    z-index: 9999;
+    
+    ~ .overlay {
+      background-color: rgba($black-regular,.5);
+      cursor: progress;
+      height: 100%;
+      left: 0;
+      opacity: 1;
+      position: absolute;
+      top: 0;
+      transform: translateX(0);
+      transition: all .1s $animation-easing 0s;
+      visibility: visible;
+      width: 100%;
+      z-index: 9998;
+    }
+  }
+  .close {
+    background: none repeat scroll 0 0 transparent;
+    border: 0 none;
+    color: $grey-regular;
+    cursor: pointer;
+    font-size: 1.8em;
+    font-weight: 300;
+    position: absolute;
+    right: .2rem;
+    top: .2rem;
+    transition: all $animation-duration $animation-easing 0s;
+    
+    &:hover, &:active, &:focus {
+      outline: 0;
+      text-decoration: none;
+    }
+    &:hover{
+      color: $grey-dark;
+    }
+  }
+}
+
+
+@keyframes appear {
+  0% {
+    transform:translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform:translateY(0);
+  }
+}
