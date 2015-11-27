@@ -6,6 +6,9 @@ angular.module('blog').controller('AddPostController', ($scope, $log, $state, Po
 
   $scope.isSubmitted = false;
   
+  // no selection
+  $scope.$emit('selectionChanged', {postId: ''});
+  
   $scope.addPost = (post, form) => {
     $scope.isSubmitted = true;
     
