@@ -27,6 +27,13 @@
   },
   "settings": {
     "src": "./src/",
+    "jsSources": [
+      "./src/js/app/modules/blog.admin/BlogAdminModule.js",
+      "./src/js/app/modules/blog.admin/**/*.js",
+      "./src/js/app/modules/blog/BlogModule.js",
+      "./src/js/app/modules/blog/**/*.js",
+      "./src/js/app/app.js"
+    ],
     "dist": "./dist/",
     "reports": "./reports/",
     "tests": "./tests/",
