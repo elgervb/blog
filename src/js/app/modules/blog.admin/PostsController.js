@@ -2,14 +2,15 @@
 /**
  * Main admin controller
  */
-angular.module('blog').controller('PostsController', ($scope, $log, PostsService) => {
+angular.module('blog.admin').controller('PostsController', ($scope, $log, PostsService) => {
   
   PostsService.list().then((res) => {
     $scope.posts = res.data;
   }).catch((res) => {
     $log.error(res);
+     $scope.err = 'Failed to fetch links';
   });
-  
+ 
   /**
    * Listen for selection changes and make changes to the blog menu
    */

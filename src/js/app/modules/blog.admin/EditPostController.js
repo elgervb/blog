@@ -2,7 +2,7 @@
 /**
  * Main blog controller
  */
-angular.module('blog').controller('EditPostController', ($scope, $log, $stateParams, PostsService) => {
+angular.module('blog.admin').controller('EditPostController', ($scope, $log, $stateParams, PostsService) => {
 
   $scope.isSubmitted = false;
   

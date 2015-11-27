@@ -1,5 +1,5 @@
 /* global angular */
-angular.module('blog').directive('renderTemplate', ($compile) => {
+angular.module('blog.admin').directive('renderTemplate', ($compile) => {
   return {
     link: (scope, element, attrs) => {
       scope.$watch(

@@ -1,8 +1,5 @@
 /* global angular */
-/**
- * Declaration of the main skeleton app
- */
-angular.module('blog', ['ui.router', 'ngMessages', 'templates'])
+angular.module('blog')
 
 /**
  * Configuration: state your routes and other configuration items here
@@ -26,17 +23,17 @@ angular.module('blog', ['ui.router', 'ngMessages', 'templates'])
     })
       .state('admin.posts', {
         url: '/posts',
-        templateUrl: 'modules/blogadmin/PostsController.html',
+        templateUrl: 'modules/blog.admin/PostsController.html',
         controller: 'PostsController'
       })
         .state('admin.posts.add', {
           url: '/add',
-          templateUrl: 'modules/blogadmin/AddPostController.html',
+          templateUrl: 'modules/blog.admin/AddPostController.html',
           controller: 'AddPostController'
         })
         .state('admin.posts.edit', {
           url: '/edit/:postId',
-          templateUrl: 'modules/blogadmin/EditPostController.html',
+          templateUrl: 'modules/blog.admin/EditPostController.html',
           controller: 'EditPostController'
         });
 

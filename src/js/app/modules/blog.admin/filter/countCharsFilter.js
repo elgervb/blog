@@ -1,5 +1,5 @@
 /* global angular */
-angular.module('blog').filter('countChars', () => {
+angular.module('blog.admin').filter('countChars', () => {
   return function(str) {
     if (!str) {
       return 0;

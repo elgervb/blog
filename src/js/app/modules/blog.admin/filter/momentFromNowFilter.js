@@ -1,5 +1,5 @@
 /* global angular, moment */
-angular.module('blog').filter('momentFromNow', () => {
+angular.module('blog.admin').filter('momentFromNow', () => {
   return function(date) {
     if (!date) {
       return date;

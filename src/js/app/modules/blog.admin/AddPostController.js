@@ -2,7 +2,7 @@
 /**
  * Add post controller
  */
-angular.module('blog').controller('AddPostController', ($scope, $log, $state, PostsService) => {
+angular.module('blog.admin').controller('AddPostController', ($scope, $log, $state, PostsService) => {
 
   $scope.isSubmitted = false;
   
