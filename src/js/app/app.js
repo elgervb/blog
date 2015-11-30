@@ -1,5 +1,5 @@
 /* global angular */
-angular.module('blog')
+angular.module('blogapp', ['ui.router', 'templates', 'blog', 'blog.admin'])
 
 /**
  * Configuration: state your routes and other configuration items here
