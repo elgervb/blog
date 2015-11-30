@@ -1,0 +1,13 @@
+.code-block{
+  background: $grey-regular;
+  display: block;
+  margin-bottom: 2rem;
+  overflow-x: auto;
+  padding: 1em .5em 2em;
+  white-space: pre;
+
+  @include max-phone{
+    font-size: .8em;
+    padding: 0 .5em 1em;
+  }
+}
