@@ -1,0 +1,103 @@
+.blog-app {
+  display: flex;
+}
+.blog-header{
+  background: $grey-regular;
+  position: fixed;
+  max-width: 470px;
+  min-height: 100%;
+  order: 2;
+  padding: 3em 1em;
+  text-align: center;
+  width: 25%;
+
+  @include max-small-tablet{
+    max-width: none;
+    min-height: inherit;
+    padding: 1em;
+    position: static;
+    width: 100%;
+  }
+
+  .social{
+    margin: 4em 0 2em;
+
+     @include max-small-tablet{
+      margin: 1em 0 .5em;
+     }
+  }
+}
+
+
+.blog-list{
+  margin: 0;
+  min-height: 100%;
+  order: 1;
+  padding: 48px 4% 48px 5%;
+  position: relative;
+  width: 75%;
+
+  @include max-small-tablet{
+    width: 100%;
+  }
+
+  article{
+    padding-bottom: 1em;
+    padding-left: 140px;
+    position: relative;
+
+    @include max-phone-landscape{
+      border-bottom: 1px dotted #999;
+      margin-bottom: 1em;
+      padding-bottom: 0;
+      padding-left: 0;
+    }
+  }
+  .post-date{
+    border-bottom: 1px solid #999;
+    position: absolute;
+    left: 0;
+    width: 100px;
+
+    @extend .clearfix;
+
+    .day{
+      color: $grey-dark;
+      float: right;
+      font-size: 2.5em;
+      line-height: 1;
+      padding: 0;    
+    }
+    .month{
+      color: $grey-dark;
+      display: block;
+      font-size: 1.6em;
+      padding: 0;
+    }
+    .year{
+      color: $grey-dark;
+      display: block;
+      padding: 0;
+    }
+    /**
+     * 
+     */
+    @include max-phone-landscape{
+      border-bottom: none;
+      display: inline;
+      position: static;
+
+      .day, .month, .year{
+        display: inline;
+        font-size: 1em;
+      }
+    }
+  }
+  h2 a{
+    color: $black-regular;
+
+    &:hover{
+      border-bottom: 1px solid $black-regular;
+    }
+  }
+}
