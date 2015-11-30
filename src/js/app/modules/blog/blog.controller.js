@@ -2,7 +2,7 @@
 /**
  * Main blog controller
  */
-angular.module('blog').controller('blog', ($scope, $log, PostsService) => {
+angular.module('blog').controller('list', ($scope, $log, PostsService) => {
 
   PostsService.list().then((res) => {
     $scope.posts = res.data;
