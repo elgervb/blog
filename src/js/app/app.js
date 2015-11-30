@@ -12,8 +12,8 @@ angular.module('blog')
   $stateProvider
     .state('main', {
       url: '/',
-      templateUrl: 'modules/blog/main.html',
-      controller: 'BlogController'
+      templateUrl: 'modules/blog/blog.html',
+      controller: 'blog'
     })
     
     // Admin
