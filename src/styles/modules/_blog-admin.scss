@@ -65,3 +65,16 @@
    width: 100%;
  }
 }
+.postform {
+  width: 100%;
+  
+  .column {
+    flex-direction: column;
+  }
+  textarea{ 
+    max-width: none;
+    min-height: 300px;
+    flex-grow: 2;
+    width: 100%;
+  }
+}

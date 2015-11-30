@@ -1,4 +1,4 @@
-<form name="form" ng-submit="submit(post, form)" novalidate>
+<form name="form" class="postform" ng-submit="submit(post, form)" novalidate>
   
   <div class="field">
      <label for="postTitle">title</label>
@@ -16,7 +16,7 @@
      </div>
   </div>
   
-  <div class="field">
+  <div class="field column">
      <label for="postContent">post</label>
      <textarea id="postContent" name="postContent" ng-model="post.content" required></textarea>
      <div ng-messages="form.postContent.$error" ng-show="form.postContent.$touched || isSubmitted">
