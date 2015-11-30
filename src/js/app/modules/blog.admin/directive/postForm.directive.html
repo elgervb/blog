@@ -9,6 +9,14 @@
   </div>
   
   <div class="field">
+     <label for="postSummary">summary</label>
+     <input type="text" id="postSummary" name="postSummary" ng-model="post.summary" required />
+     <div ng-messages="form.postSummary.$error" ng-show="form.postSummary.$touched || isSubmitted">
+       <div ng-message="required">This field is required</div>
+     </div>
+  </div>
+  
+  <div class="field">
      <label for="postContent">post</label>
      <textarea id="postContent" name="postContent" ng-model="post.content" required></textarea>
      <div ng-messages="form.postContent.$error" ng-show="form.postContent.$touched || isSubmitted">

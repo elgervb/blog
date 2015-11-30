@@ -42,6 +42,7 @@ $router->route('posts-list', '/posts', function() {
     $data = json_decode(file_get_contents("php://input"), true);
     if ($data) {
         $post->title = $data['post']['title'];
+        $post->summary = $data['post']['summary'];
         $post->content = $data['post']['content'];
         $post->created = R::isoDateTime(time());
         
@@ -63,6 +64,7 @@ $router->route('posts-list', '/posts', function() {
     $data = json_decode(file_get_contents("php://input"), true);
     if ($data) {
         $post->title = $data['post']['title'];
+        $post->summary = $data['post']['summary'];
         $post->content = $data['post']['content'];
 
         R::store($post);
