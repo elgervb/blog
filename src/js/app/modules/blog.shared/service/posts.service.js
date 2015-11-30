@@ -1,5 +1,5 @@
 /* global angular */
-angular.module('blog.admin').service('PostsService', ($http, BaseUrl) => {
+angular.module('blog.shared').service('PostsService', ($http, BaseUrl) => {
   return {
     add: (post) => {
       return $http({

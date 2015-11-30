@@ -19,6 +19,11 @@ angular.module('blogapp', ['ui.router', 'templates', 'blog', 'blog.admin'])
       templateUrl: 'modules/blog/blog.html',
       controller: 'blog'
     })
+    .state('main.details', {
+      url: 'post/:postId',
+      templateUrl: 'modules/blog/details.html',
+      controller: 'details'
+    })
     
     // Admin
     .state('admin', {

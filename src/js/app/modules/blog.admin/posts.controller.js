@@ -8,7 +8,7 @@ angular.module('blog.admin').controller('PostsController', ($scope, $log, PostsS
     $scope.posts = res.data;
   }).catch((res) => {
     $log.error(res);
-     $scope.err = 'Failed to fetch links';
+    $scope.err = 'Failed to fetch links';
   });
  
   /**

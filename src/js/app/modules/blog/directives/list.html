@@ -1,0 +1,14 @@
+<article ng-repeat="post in posts">
+  <p class="post-date">
+    <span class="day">24</span>
+    <span class="month">June</span>
+    <span class="year">2015</span>
+  </p>
+  
+  <h2>
+    <a ui-sref="main.details({postId: post.id})">{{post.title}}</a> 
+  </h2>
+  
+  <p>{{post.content}}</p>
+  
+</article>

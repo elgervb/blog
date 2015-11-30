@@ -1,2 +1,2 @@
 /* global angular */
-angular.module('blog.admin', []);
+angular.module('blog.admin', ['blog.shared']);

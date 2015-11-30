@@ -1,2 +1,2 @@
 /* global angular */
-angular.module('blog', ['ngMessages']);
+angular.module('blog', ['ngMessages', 'blog.shared']);
