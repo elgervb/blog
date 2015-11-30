@@ -4,8 +4,12 @@ angular.module('blogapp', ['ui.router', 'templates', 'blog', 'blog.admin'])
 /**
  * Configuration: state your routes and other configuration items here
  */
-.config(($stateProvider, $urlRouterProvider, $locationProvider) => {
+.config(($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) => {
   
+  // CSRF protection
+  $httpProvider.defaults.xsrfCookieName = 'csrftoken';
+  $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
+    
   // For any unmatched url, redirect to /
   $urlRouterProvider.otherwise('/');
 
