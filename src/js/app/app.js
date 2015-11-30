@@ -23,17 +23,17 @@ angular.module('blogapp', ['ui.router', 'templates', 'blog', 'blog.admin'])
     })
       .state('admin.posts', {
         url: '/posts',
-        templateUrl: 'modules/blog.admin/PostsController.html',
+        templateUrl: 'modules/blog.admin/posts.html',
         controller: 'PostsController'
       })
         .state('admin.posts.add', {
           url: '/add',
-          templateUrl: 'modules/blog.admin/AddPostController.html',
+          templateUrl: 'modules/blog.admin/addPost.html',
           controller: 'AddPostController'
         })
         .state('admin.posts.edit', {
           url: '/edit/:postId',
-          templateUrl: 'modules/blog.admin/EditPostController.html',
+          templateUrl: 'modules/blog.admin/editPost.html',
           controller: 'EditPostController'
         });
 

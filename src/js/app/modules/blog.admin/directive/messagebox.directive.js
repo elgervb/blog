@@ -42,6 +42,6 @@ angular.module('blog.admin').directive('messagebox', ($document) => {
     
     },
     /* The actual template */
-    templateUrl: 'modules/blog.admin/directive/messageboxDirective.html' 
+    templateUrl: 'modules/blog.admin/directive/messagebox.directive.html' 
   };
 });
