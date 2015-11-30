@@ -11,8 +11,8 @@ angular.module('blogapp', ['ui.router', 'templates', 'blog', 'blog.admin'])
   $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
     
   // For any unmatched url, redirect to /
-  $urlRouterProvider.when("", "/list");
-  $urlRouterProvider.when("/", "/list");
+  $urlRouterProvider.when('', '/list');
+  $urlRouterProvider.when('/', '/list');
   $urlRouterProvider.otherwise('/list');
 
   $stateProvider
