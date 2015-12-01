@@ -1,9 +1,10 @@
 .blog-app {
   display: flex;
+  height: 100%;
 }
 .blog-header{
   background: $grey-regular;
-  position: fixed;
+  qposition: fixed;
   max-width: 470px;
   min-height: 100%;
   order: 2;

@@ -44,6 +44,7 @@ $router->route('posts-list', '/posts', function() {
         $post->title = $data['post']['title'];
         $post->summary = $data['post']['summary'];
         $post->content = $data['post']['content'];
+        $post->controller = $data['post']['controller'];
         $post->created = R::isoDateTime(time());
         
         R::store($post);
@@ -66,6 +67,7 @@ $router->route('posts-list', '/posts', function() {
         $post->title = $data['post']['title'];
         $post->summary = $data['post']['summary'];
         $post->content = $data['post']['content'];
+        $post->controller = $data['post']['controller'];
 
         R::store($post);
     }
