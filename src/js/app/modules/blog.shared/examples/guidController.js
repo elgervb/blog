@@ -13,4 +13,7 @@ angular.module('blog.shared').controller('guidController', ($scope) => {
   $scope.generate = () => {
     $scope.guid = createGUID();
   };
+  
+  // init
+  $scope.generate();
 });
