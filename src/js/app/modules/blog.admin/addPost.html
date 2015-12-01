@@ -5,7 +5,7 @@
     <post-form post="post" submit="addPost"></post-form>
   </div>
 
-  <div class="col-50">
+  <div class="col-50" inject-ctrl="post.controller" inject="{post: post}">
     <h1>{{post.title}}</h1>
     <div render-template="post.content"></div>
   </div>

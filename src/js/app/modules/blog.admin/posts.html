@@ -12,6 +12,7 @@
           </a>
           <div ng-if="selected==post.id" class="list-post-details">
             <ul>
+              <li>{{post.summary}}</li>
               <li>Content: {{post.content | countChars}} chars</li>
               <li>Created on: {{post.created | momentFormat}}</li>
             </ul>
