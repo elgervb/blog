@@ -4,7 +4,6 @@
 }
 .blog-header{
   background: $grey-regular;
-  qposition: fixed;
   max-width: 470px;
   min-height: 100%;
   order: 2;
@@ -102,5 +101,23 @@
     &:hover{
       border-bottom: 1px solid $black-regular;
     }
+  }
+}
+.blog-post {
+  .title{
+    font-size: 4em;
+
+    @include max-small-tablet{
+      font-size: 3em;
+    }
+
+    @include max-phone{
+      font-size: 2em;
+      font-weight: 500;
+    }
+  }
+
+  .subtitle{
+    margin: 2em 0 .5em;
   }
 }
