@@ -1,7 +1,9 @@
 <section class="blog-post">
   <h1 class="title"> {{post.summary}} </h1>
   
-  <article render-template="post.content"></article>
+  <div inject-ctrl="post.controller" inject="{post: post}">
+    <article render-template="post.content"></article>
+  </div>
   
   <div class="item-navigation">
     <a class="previous" ui-sref="main.details({postId: post.id - 1})">« previous</a>
