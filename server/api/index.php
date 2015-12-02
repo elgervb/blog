@@ -17,7 +17,7 @@ $router = new Router();
  */
 $router->route('posts-list', '/posts', function() {
     $result = [];
-    $posts = R::find('post');
+    $posts = R::find('post', ' ORDER BY created DESC');
     /* @var $post RedBeanPHP\OODBBean */
     foreach($posts as $post) {
         $result[] = $post->export();
