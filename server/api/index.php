@@ -30,6 +30,19 @@ $router->route('posts-list', '/posts', function() {
  */
 ->route('post', '/posts/:id', function($id) {
     $post = R::load( 'post', $id );
+    
+    if ($post->id) {
+        $next = R::load('post', $post->id + 1);
+        if ($next) {
+            $post->next = $next->id;
+        }
+        
+        $previous = R::load('post', $post->id - 1);
+        if ($previous) {
+            $post->previous = $previous->id;
+        }
+    }
+    
     return json_encode($post->export());
 })
 
