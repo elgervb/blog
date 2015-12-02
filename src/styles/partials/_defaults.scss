@@ -18,14 +18,14 @@ body, input, textarea, select{
 a{
   background:transparent;
   border: 1px solid transparent;
-  color: #4082A0;
+  color: $blue-regular;
   cursor: pointer;
   text-decoration: none;
   vertical-align:baseline;
   transition: all .3s ease;
 }
 p a:hover{
-  border-bottom: 1px solid #4082A0;
+  border-bottom: 1px solid $blue-regular;
 }
 img{
   max-width: 100%;
