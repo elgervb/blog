@@ -41,6 +41,9 @@ $router->route('posts-list', '/posts', function() {
         if ($previous) {
             $post->previous = $previous->id;
         }
+    } else {
+        header("HTTP/1.0 404 Not Found");
+        return;
     }
     
     return json_encode($post->export());
