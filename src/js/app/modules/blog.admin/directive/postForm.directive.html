@@ -1,4 +1,4 @@
-<form name="form" class="postform" ng-submit="submit(post, form)" novalidate>
+<form name="form" class="postform" ng-submit="submitForm(post, form)" novalidate>
   
   <div class="field">
      <label for="postTitle">title</label>
@@ -30,6 +30,7 @@
   </div>
   
   <div class="field">
+    <a class="btn" ng-disabled="form.$pristine" ng-click="cancel()">Cancel changes</a>
     <button class="btn" ng-disabled="form.$invalid||form.$pristine">Submit post</button>
   </div>
   
