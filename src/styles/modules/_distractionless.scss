@@ -1,0 +1,32 @@
+.distractionless {
+  
+  position: relative;
+  
+  &.enabled {
+    background-color: rgb(255, 255, 255);
+    left: 0px;
+    height: 100%;
+    overflow: auto;
+    padding: 3em;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    
+    .toggle-icon {
+      font-size: 3em;
+      transform: rotate(180deg);
+      
+      @include transition(transform);
+    }
+  }
+  
+  .toggle-icon {
+    cursor: pointer;
+    position: absolute;
+    right: 1em;
+  }
+}
+
+.distractionless-noscroll{
+  overflow: hidden; 
+}
