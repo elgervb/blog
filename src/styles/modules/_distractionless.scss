@@ -12,21 +12,39 @@
     top: 0px;
     width: 100%;
     
-    .toggle-icon {
-      font-size: 3em;
-      transform: rotate(180deg);
-      
-      @include transition(transform);
+    > .toggle-icon {
+      background-image: url(../img/icons/collapse.png);
     }
   }
   
+  &:hover .toggle-icon {
+    opacity: .4; 
+  }
+  
   .toggle-icon {
+    background: transparent url(../img/icons/expand.png) no-repeat center center;
+    background-size: 26px 26px;
     cursor: pointer;
+    height: 26px;
+    margin: 1em 0;
+    opacity: .1;
     position: absolute;
     right: 1em;
+    text-indent: -999999em;
+    width: 26px;
+    
+    @include transition(all);
+    
+    &:hover {
+      opacity: .8;
+    }
   }
 }
 
+/**
+ * Defines a class to set an element to have no scrolling at all. Usually this would be set on the body tag 
+ * to avoid double scrollbars when entering distractionless mode
+ */
 .distractionless-noscroll{
   overflow: hidden; 
 }
