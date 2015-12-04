@@ -1,0 +1,159 @@
+$switchWidth: 60px !default;
+$switchHeight: 30px;
+$switchPadding: 2px;
+$switchEnabledColor: #8CE196;
+$switchDisabledColor: #dddddd;
+$switchSelectorColor: #ffffff;
+$animation-duration: .3s;
+
+/* ============================================================
+  COMMON
+============================================================ */
+.cmn-toggle {
+  position: absolute;
+  margin-left: -9999px;
+  visibility: hidden;
+
+  & + label {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    user-select: none;
+    padding: $switchPadding;
+    width: $switchWidth;
+    height: $switchHeight;
+    transition: background $animation-duration;
+  }
+}
+  
+
+/* ============================================================
+  SWITCH 1 - ROUND
+============================================================ */
+input.cmn-toggle-round + label {
+  background-color: $switchDisabledColor;
+  border-radius: $switchHeight;
+
+  &:before, &:after {
+    display: block;
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    bottom: 1px;
+    content: "";
+  }
+
+  &:before {
+    right: 1px;
+    background-color: $switchDisabledColor;
+    border-radius: $switchHeight;
+    transition: background $animation-duration;
+  }
+  &:after {
+    width: $switchHeight - $switchPadding;
+    background-color: $switchSelectorColor;
+    border-radius: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: margin $animation-duration;
+  }
+}
+
+input.cmn-toggle-round:checked + label {
+  background-color: $switchEnabledColor;
+
+  &:before {
+    background-color: $switchEnabledColor;
+  }
+  &:after {
+    margin-left: $switchWidth - $switchHeight;
+  }
+} 
+  
+
+/* ============================================================
+  SWITCH 2 - ROUND FLAT
+============================================================ */
+input.cmn-toggle-round-flat + label {
+  background-color: $switchDisabledColor;
+  border-radius: $switchHeight;
+
+  &:before, &:after {
+    display: block;
+    position: absolute;
+    content: "";
+  }
+  &:before {
+    top: 2px;
+    left: 2px;
+    bottom: 2px;
+    right: 2px;
+    background-color: $switchSelectorColor;
+    border-radius: $switchHeight;
+    transition: background $animation-duration;
+  }
+  &:after {
+    top: 4px;
+    left: 4px;
+    bottom: 4px;
+    width: $switchHeight - 8px; /* left + 2 x padding */
+    background-color: $switchDisabledColor;
+    border-radius: 50%;
+    transition: margin $animation-duration, background $animation-duration;
+  }
+}
+  
+input.cmn-toggle-round-flat:checked + label {
+  background-color: $switchEnabledColor;
+  
+  &:after {
+    margin-left: $switchWidth - $switchHeight;
+    background-color: $switchEnabledColor;
+  }
+}
+  
+
+/* ============================================================
+  SWITCH 3 - YES NO
+============================================================ */
+input.cmn-toggle-yes-no + label{
+
+  &:before, &:after {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    color: $switchSelectorColor;
+    font-family: "Roboto Slab", serif;
+    font-size: 20px;
+    text-align: center;
+    line-height: $switchHeight;
+  }
+  &:before {
+    background-color: $switchDisabledColor;
+    content: attr(data-off);
+    transition: transform $animation-duration;
+    backface-visibility: hidden;
+  }
+  &:after {
+    background-color: $switchEnabledColor;
+    content: attr(data-on);
+    transition: transform $animation-duration;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+  }
+}
+
+input.cmn-toggle-yes-no:checked + label{
+
+  &:before {
+    transform: rotateY(180deg);
+  }
+  &:after {
+    transform: rotateY(0);
+  }
+  
+}
+  
