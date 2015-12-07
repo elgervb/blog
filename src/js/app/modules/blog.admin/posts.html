@@ -5,6 +5,22 @@
     <h1 class="title">Posts</h1>
     <a class="btn-add-post" ui-sref="admin.posts.add">add new post</a>
     <nav>
+      <h3>Drafts ({{drafts.length||0}})</h3>
+      <ul>
+        <li ng-repeat="draft in drafts" >
+          <a ui-sref="admin.posts.edit({postId: draft.id})" ng-class="{selected: selected==draft.id}">
+            {{draft.title}}  <span class="from-now">{{draft.created | momentFromNow}}</span>
+          </a>
+          <div ng-if="selected==draft.id" class="list-post-details">
+            <ul>
+              <li>{{draft.summary}}</li>
+              <li>Content: {{draft.content | countChars}} chars</li>
+              <li>Created on: {{draft.created | momentFormat}}</li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+      <h3>Active Posts ({{posts.length||0}})</h3>
       <ul>
         <li ng-repeat="post in posts" >
           <a ui-sref="admin.posts.edit({postId: post.id})" ng-class="{selected: selected==post.id}">

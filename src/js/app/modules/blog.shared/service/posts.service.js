@@ -26,6 +26,12 @@ angular.module('blog.shared').service('PostsService', ($http, BaseUrl) => {
         method: 'GET',
         url: `${BaseUrl}/posts`
       });
+    },
+    drafts: () => {
+      return $http({
+        method: 'GET',
+        url: `${BaseUrl}/posts/drafts`
+      });
     }
   };
 });

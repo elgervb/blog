@@ -4,11 +4,19 @@
  */
 angular.module('blog.admin').controller('PostsController', ($scope, $log, PostsService) => {
   
+  
+  PostsService.drafts().then((res) => {
+    $scope.drafts = res.data;
+  }).catch((res) => {
+    $log.error(res);
+    $scope.err = 'Failed to fetch drafts';
+  });
+  
   PostsService.list().then((res) => {
     $scope.posts = res.data;
   }).catch((res) => {
     $log.error(res);
-    $scope.err = 'Failed to fetch links';
+    $scope.err = 'Failed to fetch posts';
   });
  
   /**

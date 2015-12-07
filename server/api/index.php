@@ -1,8 +1,10 @@
 <?php
 use router\Router;
 use RedBeanPHP\R;
+use http\HttpContext;
 
 include __DIR__ . '/../vendor/autoload.php';
+include 'Model_Post.php';
 
 // setup database
 R::setup( 'sqlite:./db/dbfile.db' );
@@ -17,10 +19,23 @@ $router = new Router();
  */
 $router->route('posts-list', '/posts', function() {
     $result = [];
-    $posts = R::find('post', ' ORDER BY created DESC');
+    $posts = R::find('post', ' isActive = 1 ORDER BY created DESC');
     /* @var $post RedBeanPHP\OODBBean */
     foreach($posts as $post) {
         $result[] = $post->export();
+    }
+    return json_encode($result);
+})
+
+/**
+ * Fetch all drafts
+ */
+->route('drafts-list', '/posts/drafts', function() {
+    $result = [];
+    $drafts = R::find('post', ' isActive = 0 ORDER BY created DESC');
+    /* @var $post RedBeanPHP\OODBBean */
+    foreach($drafts as $draft) {
+        $result[] = $draft->export();
     }
     return json_encode($result);
 })
@@ -55,14 +70,13 @@ $router->route('posts-list', '/posts', function() {
 ->route('add-post', '/posts', function() {
     $post = R::dispense('post');
     
-    $data = json_decode(file_get_contents("php://input"), true);
-    if ($data) {
-        $post->title = $data['post']['title'];
-        $post->summary = $data['post']['summary'];
-        $post->content = $data['post']['content'];
-        if (isset($data['post']['controller'])) {
-            $post->controller = $data['post']['controller'];
-        }
+    $request = HttpContext::get()->getRequest();
+    if ($request->hasPost('post')) {
+        $post->title = $request->getPost('post', 'title');
+        $post->summary = $request->getPost('post', 'summary');
+        $post->isactive = $request->getPost('post', 'isactive');
+        $post->content = $request->getPost('post', 'content');
+        $post->controller = $request->getPost('post', 'controller');
         $post->created = R::isoDateTime(time());
         
         R::store($post);
@@ -80,14 +94,13 @@ $router->route('posts-list', '/posts', function() {
         return;
     }
 
-    $data = json_decode(file_get_contents("php://input"), true);
-    if ($data) {
-        $post->title = $data['post']['title'];
-        $post->summary = $data['post']['summary'];
-        $post->content = $data['post']['content'];
-        if (isset($data['post']['controller'])) {
-            $post->controller = $data['post']['controller'];
-        }
+    $request = HttpContext::get()->getRequest();
+    if ($request->hasPost('post')) {
+        $post->title = $request->getPost('post', 'title');
+        $post->summary = $request->getPost('post', 'summary');
+        $post->isactive = $request->getPost('post', 'isactive');
+        $post->content = $request->getPost('post', 'content');
+        $post->controller = $request->getPost('post', 'controller');
         R::store($post);
     }
 
