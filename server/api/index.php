@@ -47,11 +47,12 @@ $router->route('posts-list', '/posts', function() {
     $post = R::load( 'post', $id );
     
     if ($post->id) {
+        // TODO only pick active posts
         $next = R::load('post', $post->id + 1);
         if ($next) {
             $post->next = $next->id;
         }
-        
+        // TODO only pick active posts
         $previous = R::load('post', $post->id - 1);
         if ($previous) {
             $post->previous = $previous->id;
