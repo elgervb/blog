@@ -5,7 +5,6 @@
 }
 .blog-header{
   background: $grey-regular;
-  max-width: 470px;
   min-height: 100%;
   order: 2;
   padding: 3em 1em;
@@ -13,7 +12,6 @@
   width: 25%;
 
   @include max-small-tablet{
-    max-width: none;
     min-height: inherit;
     padding: 1em;
     position: static;
@@ -29,7 +27,6 @@
   }
 }
 
-
 .blog-content {
   margin: 0;
   min-height: 100%;
@@ -37,6 +34,7 @@
   overflow-y: auto;
   padding: 48px 4% 48px 5%;
   position: relative;
+  width: 75%;
 
   @include max-small-tablet{
     width: 100%;
