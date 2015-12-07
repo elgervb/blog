@@ -17,15 +17,11 @@
 	],
 	"require" : {
 		"elgervb/php-router" : "master-dev",
+		"elgervb/php-http" : "master-dev",
 		"gabordemooij/redbean" : "master-dev"
 	},
 	"require-dev" : {
 		"phpunit/phpunit" : "^4.8"
-	},
-	"autoload" : {
-		"psr-0" : {
-			
-		}
 	},
 	"support" : {
 		"source" : "https://bitbucket.org/elgervb/ppn/",
