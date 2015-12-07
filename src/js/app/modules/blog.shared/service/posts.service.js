@@ -4,6 +4,7 @@ angular.module('blog.shared').service('PostsService', ($http, BaseUrl) => {
     add: (post) => {
       return $http({
         method: 'POST',
+        cache: true,
         url: `${BaseUrl}/posts`,
         data: {post}
       });
@@ -11,6 +12,7 @@ angular.module('blog.shared').service('PostsService', ($http, BaseUrl) => {
     edit: (post) => {
       return $http({
         method: 'PUT',
+        cache: true,
         url: `${BaseUrl}/posts/${post.id}`,
         data: {post}
       });
@@ -18,18 +20,21 @@ angular.module('blog.shared').service('PostsService', ($http, BaseUrl) => {
     get: (postId) => {
       return $http({
         method: 'GET',
+        cache: true,
         url: `${BaseUrl}/posts/${postId}`
       });
     },
     list: () => {
       return $http({
         method: 'GET',
+        cache: true,
         url: `${BaseUrl}/posts`
       });
     },
     drafts: () => {
       return $http({
         method: 'GET',
+        cache: true,
         url: `${BaseUrl}/posts/drafts`
       });
     }
