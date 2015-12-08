@@ -57,4 +57,4 @@ angular.module('blogapp', ['ui.router', 'templates', 'blog', 'blog.admin'])
 
 })
 
-.constant('BaseUrl', '/api'); // proxy to http://localhost:4011 in gulpfile in devmode
+.constant('BaseUrl', '/blog/server/api'); // proxy to http://localhost:4011 in gulpfile in devmode
