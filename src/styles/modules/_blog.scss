@@ -122,25 +122,28 @@
 }
 
 .item-navigation {
-  margin-top: 50px;
+  padding: 2em 0;
+  position: relative;
   width: 100%;
 
   .previous, .next{
     display: block;
     font-size: 1.2em;
     font-weight: 200;
+    letter-spacing: .1rem;
     position: absolute;
+    transform: translateY(-50%);
 
     &:hover{
       border-bottom: 1px solid $blue-regular;
     }
   }
   .previous{
-    left: 5%;
+    left: 0;
     text-align: left;
   }
   .next{
-    right: 4%;
+    right: 0;
     text-align: right;
   }
 }
