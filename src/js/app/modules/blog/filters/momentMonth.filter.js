@@ -1,6 +1,6 @@
 /* global angular, moment */
 angular.module('blog').filter('momentMonth', () => {
-  return function(date, asString) {
+  return (date, asString) => {
     if (!date) {
       return date;
     }
