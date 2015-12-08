@@ -32,7 +32,7 @@ gulp.task('browser-sync', ['watch'], () => {
   
   // proxy settings for /api
   let proxyOptions = url.parse('http://localhost:4011');
-  proxyOptions.route = '/api';
+  proxyOptions.route = '/blog/server/api';
 
   return browserSync({
     browser: ['google chrome'],
