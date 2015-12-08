@@ -6,8 +6,8 @@
   </div>
   
   <div class="item-navigation">
-    <a class="previous" ui-sref="main.details({postId: post.previous})">« previous</a>
-    <a class="next" ui-sref="main.details({postId: post.next})">next »</a>
+    <a class="previous" ng-click="goPrevious(post)">« previous</a>
+    <a class="next" ng-click="goNext(post)">next »</a>
   </div>
   
 </section>
