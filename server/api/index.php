@@ -32,7 +32,7 @@ $router->route('posts-list', '/posts', function() {
  */
 ->route('drafts-list', '/posts/drafts', function() {
     $result = [];
-    $drafts = R::find('post', ' isActive = 0 ORDER BY created DESC');
+    $drafts = R::find('post', ' isActive != 1 ORDER BY created DESC');
     /* @var $post RedBeanPHP\OODBBean */
     foreach($drafts as $draft) {
         $result[] = $draft->export();
