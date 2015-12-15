@@ -10,43 +10,41 @@ angular.module('blog.shared').controller('batteryController', ($scope, $log) => 
   if ($scope.isSupported()) {
     navigator.getBattery().then((battery) => {
     
-      $scope.$apply(() => {
-        $log.info('battery API supported');
-        $log.info('level', battery.level, 'dischargingTime', battery.dischargingTime);
-        $scope.battery = battery;
+      $scope.battery = {};
       
-        let charging = battery.charging ? 'Yes' : 'No';
-        $scope.messages.push(`Battery charging? ${charging}`);
-        $scope.messages.push(`Battery level: ${battery.level * 100}%`);
-        $scope.messages.push(`Battery charging time: ${battery.chargingTime} seconds`);
-        $scope.messages.push(`Battery discharging time: ${battery.dischargingTime} seconds`);
-        $log.info($scope.messages);
-        battery.addEventListener('chargingchange', () => {
-          $scope.$apply(() => {
-            $scope.messages.push(`Battery charging? ${charging}`);
-          });
+      let updateBattery = () => {
+        $scope.$apply(() => {
+          $scope.battery.level = battery.level * 100;
+          $scope.battery.dischargingTime = battery.dischargingTime;
+          $scope.battery.chargingTime = battery.chargingTime;
+          $scope.battery.charging = battery.charging;
+          $scope.battery.chargingStr = battery.charging ? 'Yes' : 'No';
         });
+      };
       
-        battery.addEventListener('levelchange', () => {
-          $scope.$apply(() => {
-            $scope.messages.push(`Battery level: ${battery.level * 100}%`);
-          });
-        });
+      updateBattery();
       
-        battery.addEventListener('chargingtimechange', () => {
-          $scope.$apply(() => {
-            $scope.messages.push(`Battery charging time: ${battery.chargingTime} seconds`);
-          });
-        });
+      $log.info('battery API supported');
+      $log.info('level', $scope.battery.level, 'dischargingTime', $scope.battery.dischargingTime);
       
-        battery.addEventListener('dischargingtimechange', () => {
-          $scope.$apply(() => {
-            $scope.messages.push(`Battery discharging time: ${battery.dischargingTime} seconds`);
-          });
-        });
+      
+      battery.addEventListener('chargingchange', () => {
+        updateBattery();
       });
     
+      battery.addEventListener('levelchange', () => {
+        updateBattery();
+      });
+    
+      battery.addEventListener('chargingtimechange', () => {
+        updateBattery();
+      });
+    
+      battery.addEventListener('dischargingtimechange', () => {
+        updateBattery();
+      });
     });
+    
   }
   
 });
