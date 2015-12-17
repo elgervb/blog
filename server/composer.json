@@ -25,6 +25,11 @@
 	"require-dev" : {
 		"phpunit/phpunit" : "^4.8"
 	},
+	"autoload" : {
+		"psr-0" : {
+			"RedBeanPHP" : "vendor/gabordemooij/redbean"
+		}
+	},
 	"support" : {
 		"source" : "https://bitbucket.org/elgervb/ppn/",
 		"issues" : "https://bitbucket.org/elgervb/ppn/issues",
