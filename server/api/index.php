@@ -4,6 +4,8 @@ use RedBeanPHP\R;
 use http\HttpContext;
 use handler\Handlers;
 use handler\json\JsonHandler;
+use handler\http\HttpStatusHandler;
+use handler\json\Json;
 
 include __DIR__ . '/../vendor/autoload.php';
 include 'Model_Post.php';
@@ -14,8 +16,9 @@ date_default_timezone_set("UTC");
 ini_set('date.timezone', 'UTC');
 
 $router = new Router();
-$handler = Handlers::get();
-$handler->add(new JsonHandler());
+$handlers = Handlers::get();
+$handlers->add(new JsonHandler());
+$handlers->add(new HttpStatusHandler());
 
 /**
  * Fetch all posts
@@ -27,7 +30,7 @@ $router->route('posts-list', '/posts', function() {
     foreach($posts as $post) {
         $result[] = $post->export();
     }
-    return json_encode($result);
+    return new Json($result);
 })
 
 /**
@@ -40,7 +43,7 @@ $router->route('posts-list', '/posts', function() {
     foreach($drafts as $draft) {
         $result[] = $draft->export();
     }
-    return json_encode($result);
+    return new Json($result);
 })
 
 /**
@@ -64,7 +67,7 @@ $router->route('posts-list', '/posts', function() {
         return;
     }
     
-    return json_encode($post->export());
+    return new Json($post->export());
 })
 
 /**
@@ -85,7 +88,7 @@ $router->route('posts-list', '/posts', function() {
         R::store($post);
     }
     
-    return json_encode($post->export());
+    return new Json($post->export());
 }, 'POST')
 /**
  * Edit a single post
@@ -107,9 +110,14 @@ $router->route('posts-list', '/posts', function() {
         R::store($post);
     }
 
-    return json_encode($post->export());
+    return new Json($post->export());
 }, 'PUT');
 
 
-header('Content-Type: application/json');
-echo $router->match($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
+$result = $router->match($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
+
+$handler = $handlers->getHandler($result);
+
+if ($handler) {
+    $handler->handle($result);
+}
