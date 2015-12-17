@@ -2,6 +2,8 @@
 use router\Router;
 use RedBeanPHP\R;
 use http\HttpContext;
+use handler\Handlers;
+use handler\json\JsonHandler;
 
 include __DIR__ . '/../vendor/autoload.php';
 include 'Model_Post.php';
@@ -12,7 +14,8 @@ date_default_timezone_set("UTC");
 ini_set('date.timezone', 'UTC');
 
 $router = new Router();
-
+$handler = Handlers::get();
+$handler->add(new JsonHandler());
 
 /**
  * Fetch all posts
