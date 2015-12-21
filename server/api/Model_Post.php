@@ -1,6 +1,7 @@
 <?php
 
 use RedBeanPHP\SimpleModel;
+
 class Model_Post extends SimpleModel{
     
     public function update () {

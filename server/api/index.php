@@ -8,20 +8,24 @@ use handler\http\HttpStatusHandler;
 use handler\json\Json;
 use handler\http\HttpStatus;
 use http\HttpSession;
+use auth\service\HttpAuth;
+use auth\provider\HtpasswdProvider;
 
 include __DIR__ . '/../vendor/autoload.php';
 include 'Model_Post.php';
 
 // setup database
-R::setup('sqlite:./db/dbfile.db');
+R::setup('sqlite:../db/dbfile.db');
 // all dates in UTC timezone
 date_default_timezone_set("UTC");
 ini_set('date.timezone', 'UTC');
 
 $router = new Router();
+$auth = new HttpAuth(new HtpasswdProvider('../db/.htpasswd'), 'Posts admin');
 $handlers = Handlers::get();
 $handlers->add(new JsonHandler());
 $handlers->add(new HttpStatusHandler());
+
 
 /**
  * Fetch all posts
@@ -43,8 +47,10 @@ $router->route('posts-list', '/posts', function ()
  *
  * @return Json array with all drafts
  */
-->route('drafts-list', '/posts/drafts', function ()
+->route('drafts-list', '/posts/drafts', function () use ($auth)
 {
+    $auth->authenticate();
+    
     $result = [];
     $drafts = R::find('post', ' isActive != 1 ORDER BY created DESC');
     /* @var $post RedBeanPHP\OODBBean */
@@ -88,8 +94,10 @@ $router->route('posts-list', '/posts', function ()
  * 
  * @return Json the newly added post | HttpStatus 204 no content when no data available on http post
  */
-->route('add-post', '/posts', function ()
+->route('add-post', '/posts', function () use ($auth)
 {
+    $auth->authenticate();
+    
     $post = R::dispense('post');
     
     $request = HttpContext::get()->getRequest();
@@ -113,8 +121,10 @@ $router->route('posts-list', '/posts', function ()
  * 
  * @return Json post object | HttpStatus 
  */
-->route('edit-post', '/posts/:id', function ($id)
+->route('edit-post', '/posts/:id', function ($id) use ($auth)
 {
+    $auth->authenticate();
+    
     $post = R::load('post', $id);
     
     if ($post->id != $id) {
@@ -140,4 +150,8 @@ $handler = $handlers->getHandler($result);
 
 if ($handler) {
     $handler->handle($result);
+} else {
+    $error = new HttpStatus(404, ' ');
+    $handler = $handlers->getHandler($error);
+    $handler->handle($error);
 }
