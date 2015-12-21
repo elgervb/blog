@@ -1,0 +1,40 @@
+<?php
+namespace auth;
+/**
+ * Interface for the Auth Service
+ * 
+ * @author elger
+ */
+interface IAuthService
+{
+    /**
+     * Returns the logged in user
+     *
+     * @return \auth\user\Model_User the user model, or null when not logged in
+     */
+    public function getUser();
+    
+    /**
+     * Checks if the user is logged in
+     *
+     * @return boolean true if the user is logged in, false if not
+     */
+    public function isLoggedIn();
+    
+    /**
+     * Logs out the currently logged in user
+     *
+     * @return void
+     */
+    public function logout();
+    
+    /**
+     * Signs in the user with supplied credentials
+     * 
+     * @param string $username The username
+     * @param string $password The plain text password
+     * 
+     * @return object | boolean model if the user could succesfully log in, false if not
+     */
+    public function login($username, $password);
+}
