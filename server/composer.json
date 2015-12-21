@@ -1,6 +1,6 @@
 {
 	"name" : "blog-admin",
-	"type" : "library",
+	"type" : "website",
 	"authors" : [{
 			"name" : "Elger van Boxtel",
 			"email" : "elgervb@gmail.com",
@@ -9,8 +9,7 @@
 		}
 	],
 	"keywords" : [
-		"test",
-		"gulp"
+		"blog"
 	],
 	"license" : [
 		"MIT"
@@ -27,12 +26,13 @@
 	},
 	"autoload" : {
 		"psr-0" : {
+			"auth" : "api",
 			"RedBeanPHP" : "vendor/gabordemooij/redbean"
 		}
 	},
 	"support" : {
-		"source" : "https://bitbucket.org/elgervb/ppn/",
-		"issues" : "https://bitbucket.org/elgervb/ppn/issues",
+		"source" : "https://bitbucket.org/elgervb/blog/",
+		"issues" : "https://bitbucket.org/elgervb/blog/issues",
 		"email" : "elgervb@gmail.com"
 	}
 }
