@@ -45,5 +45,7 @@ Temporary Items
 tests/cache
 node_modules
 vendor
+db/backup
+db/*.db
 composer.lock
 composer.phar
