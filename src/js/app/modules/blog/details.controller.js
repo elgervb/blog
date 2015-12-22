@@ -24,7 +24,7 @@ angular.module('blog').controller('details', ($scope, $log, $state, $stateParams
     } else {
       $state.go('main.list');
     }
-  }
+  };
   
   /**
    * Go to the previous post, based on the current post
@@ -39,6 +39,6 @@ angular.module('blog').controller('details', ($scope, $log, $state, $stateParams
     } else {
       $state.go('main.list');
     }
-  }
+  };
 
 });
