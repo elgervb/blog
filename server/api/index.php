@@ -64,23 +64,20 @@ $router->route('posts-list', '/posts', function ()
  *
  * @return Json post object | HttpStatus 404 when no posts found
  */
-->route('post', '/posts/:id', function ($id)
+->route('post', '/posts/:slug', function ($slug)
 {
-    $post = R::load('post', $id);
+    // find a post by ID or slug
+    $post = R::findOne('post', ' slug = ? OR id = ?', [$slug, $slug]);
     
     if ($post->id) {
-        $next = R::findOne('post', ' id > ? AND isactive = 1 ORDER BY id ASC', [
-            $post->id
-        ]);
+        $next = R::findOne('post', ' id > ? AND isactive = 1 ORDER BY id ASC', [$post->id]);
         if ($next) {
-            $post->next = $next->id;
+            $post->next = $next->slug;
         }
         
-        $previous = R::findOne('post', ' id < ? AND isactive = 1 ORDER BY id DESC', [
-            $post->id
-        ]);
+        $previous = R::findOne('post', ' id < ? AND isactive = 1 ORDER BY id DESC', [$post->id]);
         if ($previous) {
-            $post->previous = $previous->id;
+            $post->previous = $previous->slug;
         }
     } else {
         // no post found... give a 404
