@@ -28,7 +28,6 @@
   "settings": {
     "src": "./src/",
     "jsSources": [
-      "./src/js/app/modules/blog.shared/blog.shared.module.js",
       "./src/js/app/modules/blog.shared/**/*.js",
       "./src/js/app/modules/blog.admin/**/*.js",
       "./src/js/app/modules/blog/**/*.js",
