@@ -106,6 +106,7 @@ $router->route('posts-list', '/posts', function ()
         $post->controller = $request->getPost('post', 'controller');
         $post->slug = $request->getPost('post', 'slug');
         $post->created = R::isoDateTime(time());
+        $post->changed = R::isoDateTime(time());
         
         R::store($post);
     } else {
@@ -137,6 +138,7 @@ $router->route('posts-list', '/posts', function ()
         $post->content = $request->getPost('post', 'content');
         $post->controller = $request->getPost('post', 'controller');
         $post->slug = $request->getPost('post', 'slug');
+        $post->changed = R::isoDateTime(time());
         R::store($post);
     }
     

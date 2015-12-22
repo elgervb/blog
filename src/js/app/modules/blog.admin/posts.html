@@ -16,6 +16,7 @@
               <li>{{draft.summary}}</li>
               <li>Content: {{draft.content | countChars}} chars</li>
               <li>Created on: {{draft.created | momentFormat}}</li>
+              <li>Last changed on: {{draft.changed | momentFormat}}</li>
             </ul>
           </div>
         </li>
@@ -31,6 +32,7 @@
               <li>{{post.summary}}</li>
               <li>Content: {{post.content | countChars}} chars</li>
               <li>Created on: {{post.created | momentFormat}}</li>
+              <li>Last changed on: {{post.changed | momentFormat}}</li>
             </ul>
           </div>
         </li>
