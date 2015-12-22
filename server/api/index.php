@@ -107,6 +107,7 @@ $router->route('posts-list', '/posts', function ()
         $post->isactive = $request->getPost('post', 'isactive');
         $post->content = $request->getPost('post', 'content');
         $post->controller = $request->getPost('post', 'controller');
+        $post->slug = $request->getPost('post', 'slug');
         $post->created = R::isoDateTime(time());
         
         R::store($post);
@@ -138,6 +139,7 @@ $router->route('posts-list', '/posts', function ()
         $post->isactive = $request->getPost('post', 'isactive');
         $post->content = $request->getPost('post', 'content');
         $post->controller = $request->getPost('post', 'controller');
+        $post->slug = $request->getPost('post', 'slug');
         R::store($post);
     }
     

@@ -1,6 +1,6 @@
 /* global angular */
 
-angular.module('blog.admin').directive('postForm', () => {
+angular.module('blog.admin').directive('postForm', ($filter) => {
   
   return {
     restrict: 'E',
@@ -22,6 +22,10 @@ angular.module('blog.admin').directive('postForm', () => {
           // set the original value only once, unwatch this when set
           unwatch();
         }
+      });
+      
+      scope.$watch('post.title', (title) => {
+        scope.post.slug = $filter('slug')(title);
       });
       
       scope.cancel = () => {

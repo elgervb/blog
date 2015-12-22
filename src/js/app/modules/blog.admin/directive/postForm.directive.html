@@ -17,6 +17,15 @@
   </div>
   
   <div class="field">
+     <label for="postSlug">slug</label>
+     <span class="input">{{post.slug}}</span>
+     <input type="hidden" id="postSlug" name="postSlug" ng-model="post.slug" required />
+     <div ng-messages="form.postSlug.$error" ng-show="form.postSlug.$touched || isSubmitted">
+       <div ng-message="required">This field is required</div>
+     </div>
+  </div>
+  
+  <div class="field">
     <label>Is Published</label>
     <div class="switch">
       <input id="isActive" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" ng-model="post.isactive" ng-true-value="'1'">
