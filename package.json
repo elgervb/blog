@@ -32,7 +32,6 @@
       "./src/js/app/modules/blog.shared/**/*.js",
       "./src/js/app/modules/blog.admin/blogAdmin.module.js",
       "./src/js/app/modules/blog.admin/**/*.js",
-      "./src/js/app/modules/blog/blog.module.js",
       "./src/js/app/modules/blog/**/*.js",
       "./src/js/app/app.js"
     ],
