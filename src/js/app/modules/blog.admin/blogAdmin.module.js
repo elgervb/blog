@@ -9,17 +9,17 @@ angular.module('blog.admin', ['blog.shared'])
     })
       .state('admin.posts', {
         url: '/posts',
-        templateUrl: 'modules/blog.admin/posts.html',
+        templateUrl: 'modules/blog.admin/controllers/posts.html',
         controller: 'PostsController'
       })
         .state('admin.posts.add', {
           url: '/add',
-          templateUrl: 'modules/blog.admin/addPost.html',
+          templateUrl: 'modules/blog.admin/controllers/addPost.html',
           controller: 'AddPostController'
         })
         .state('admin.posts.edit', {
           url: '/edit/:postId',
-          templateUrl: 'modules/blog.admin/editPost.html',
+          templateUrl: 'modules/blog.admin/controllers/editPost.html',
           controller: 'EditPostController'
         });
 });
