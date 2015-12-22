@@ -25,7 +25,9 @@ angular.module('blog.admin').directive('postForm', ($filter) => {
       });
       
       scope.$watch('post.title', (title) => {
-        scope.post.slug = $filter('slug')(title);
+        if (scope.post) {
+          scope.post.slug = $filter('slug')(title);
+        }
       });
       
       scope.cancel = () => {
