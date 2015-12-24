@@ -5,7 +5,6 @@ angular.module('blog.shared').service('PostsService', ($http, BaseUrl) => {
       return $http({
         method: 'POST',
         cache: true,
-        withCredentials: true,
         url: `${BaseUrl}/posts`,
         data: {post}
       });
@@ -14,7 +13,6 @@ angular.module('blog.shared').service('PostsService', ($http, BaseUrl) => {
       return $http({
         method: 'PUT',
         cache: true,
-        withCredentials: true,
         url: `${BaseUrl}/posts/${post.id}`,
         data: {post}
       });
@@ -23,7 +21,6 @@ angular.module('blog.shared').service('PostsService', ($http, BaseUrl) => {
       return $http({
         method: 'GET',
         cache: true,
-        withCredentials: true,
         url: `${BaseUrl}/posts/${postId}`
       });
     },
@@ -31,7 +28,6 @@ angular.module('blog.shared').service('PostsService', ($http, BaseUrl) => {
       return $http({
         method: 'GET',
         cache: true,
-        withCredentials: true,
         url: `${BaseUrl}/posts`
       });
     },
@@ -39,7 +35,6 @@ angular.module('blog.shared').service('PostsService', ($http, BaseUrl) => {
       return $http({
         method: 'GET',
         cache: true,
-        withCredentials: true,
         url: `${BaseUrl}/posts/drafts`
       });
     }

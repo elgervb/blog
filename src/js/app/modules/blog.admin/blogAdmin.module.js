@@ -1,7 +1,7 @@
 /* global angular */
 angular.module('blog.admin', ['blog.shared'])
 
-.config(($stateProvider) => {
+.config(($stateProvider, $httpProvider) => {
   $stateProvider
     .state('admin', {
       url: '/admin',
@@ -22,4 +22,7 @@ angular.module('blog.admin', ['blog.shared'])
           templateUrl: 'modules/blog.admin/controllers/editPost.html',
           controller: 'EditPostController'
         });
+  
+  // by default add the withCredentials 
+  $httpProvider.defaults.withCredentials = true;
 });
