@@ -34,6 +34,8 @@
             page: $location.url(),
             title: $document[0].title
           });
+          // send the pageview
+          ga('send', 'pageview');
         } else {
           $log.log('$stateChangeSuccess', 'Google Analytics for ' + $location.url());
         }
