@@ -2,7 +2,7 @@
 /**
  * Main blog controller
  */
-angular.module('blog.admin').controller('EditPostController', ($scope, $log, $stateParams, PostsService) => {
+angular.module('blog.admin').controller('EditPostController', ($scope, $log, $stateParams, $window, PostsService) => {
 
   $scope.isSubmitted = false;
   
@@ -27,6 +27,10 @@ angular.module('blog.admin').controller('EditPostController', ($scope, $log, $st
     });
     
     $log.info('edit post');
+  };
+  
+  $scope.preview = (post) => {
+    $window.open(`//${location.host}/#/post/${post.slug}`, '_blank');
   };
   
 });

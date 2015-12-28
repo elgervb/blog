@@ -96,3 +96,11 @@
     width: 100%;
   }
 }
+.btn-preview {
+  background: $red-regular;
+  color: $white-regular;
+  
+  &:hover{
+    background: darken($red-regular, 15%);
+  }
+}
