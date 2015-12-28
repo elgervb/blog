@@ -1,21 +1,36 @@
+@include max-small-tablet{
+  body{ 
+    height: auto;
+  } 
+}
 .blog-app {
   display: flex;
+  flex-direction: row;
   height: 100%;
   overflow: hidden;
+  
+  @include max-small-tablet{
+    flex-direction: column;
+  }
 }
 .blog-header{
   background: $grey-regular;
   min-height: 100%;
-  order: 2;
+  order: 3;
   padding: 3em 1em;
   text-align: center;
   width: 25%;
 
   @include max-small-tablet{
     min-height: inherit;
-    padding: 1em;
+    order: 1;
+    padding: .2em;
     position: static;
     width: 100%;
+    
+    h1, h2 {
+      padding-bottom: .2rem;
+    }
   }
 
   .social{
@@ -30,7 +45,7 @@
 .blog-content {
   margin: 0;
   min-height: 100%;
-  order: 1;
+  order: 2;
   overflow-y: auto;
   padding: 48px 4% 48px 5%;
   position: relative;
