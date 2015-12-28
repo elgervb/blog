@@ -2,7 +2,7 @@
   
   <div class="col-50">
     <h1> Edit <i>{{post.slug}}</i> </h1>
-    <button class="btn-preview" ng-click="preview(post);" ng-disable="post.id">Preview post</button>
+    <button class="btn-preview" ng-click="preview(post);" ng-disabled="!post.id">Preview post</button>
     <post-form post="post" submit="editPost"></post-form>
   </div>
   
