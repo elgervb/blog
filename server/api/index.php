@@ -143,7 +143,35 @@ $router->route('posts-list', '/posts', function ()
     }
     
     return new Json($post->export());
-}, 'PUT');
+}, 'PUT')
+
+->route('sitemap.xml', '/generate-sitemap', function() use ($auth) {
+	$auth->authenticate();
+	
+	$posts = R::findAll('post');
+	
+	// TODO call HttpResponse::getScheme on new PHP-HTTP version
+	$protocol = strtolower($_SERVER['SERVER_PROTOCOL']);
+	if (strstr($protocol, "/")) {
+	    $parts = explode('/', $protocol);
+	    $protocol = $parts[0];
+	}
+	
+	$result = '<?xml version="1.0" encoding="UTF-8"?> <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
+	foreach ($posts as $post) {
+	    $result .= '<url>';
+	    $result .= '<loc>'.$protocol . '://' . $_SERVER['HTTP_HOST'] . '/blog/#/post/' . $post->slug .'</loc>';
+	    $result .= '</url>';
+	}
+	$result .= '</urlset>';
+
+	$fp = fopen('sitemap.xml', 'w');
+	fwrite($fp, $result);
+	fclose($fp);
+	
+	return new  HttpStatus(302, 'sitemap.xml');
+});
+
 
 $result = $router->match($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
 
