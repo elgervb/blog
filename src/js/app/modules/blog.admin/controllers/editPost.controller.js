@@ -30,7 +30,7 @@ angular.module('blog.admin').controller('EditPostController', ($scope, $log, $st
   };
   
   $scope.preview = (post) => {
-    $window.open(`//${location.host}/#/post/${post.slug}`, '_blank');
+    $window.open(`//${location.host}/blog/#/post/${post.slug}`, '_blank');
   };
   
 });
