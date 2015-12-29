@@ -1,6 +1,7 @@
+/* global customConfirm */
 /* global angular */
 
-angular.module('blog.admin').directive('postForm', ($filter) => {
+angular.module('blog.admin').directive('postForm', ($rootScope, $window, $filter) => {
   
   return {
     restrict: 'E',
@@ -47,6 +48,26 @@ angular.module('blog.admin').directive('postForm', ($filter) => {
         // calling the provided submit callback
         if (typeof scope.submit === 'function') {
           scope.submit(post, form);
+        }
+      };
+      
+      /**
+       * Prevent navigation when having changes
+       * https://github.com/angular-ui/ui-router/wiki#state-change-events
+       */
+      $rootScope.$on('$stateChangeStart', (e) => {
+        
+        if (scope.form.$dirty) {
+          if (confirm('There are pending changes. Do you want to stay on the page and save them?')) { // eslint-disable-line no-alert
+            e.preventDefault();
+          }
+        }
+      });
+      
+      // prevent window from closing 
+      $window.onbeforeunload = function(e) {
+        if (scope.form.$dirty) {
+          return 'There are pending changes. Do you want to stay on the page and save them?';
         }
       };
     }
