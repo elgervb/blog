@@ -2,10 +2,12 @@
 /**
  * Main blog controller
  */
-angular.module('blog').controller('details', ($scope, $log, $state, $stateParams, PostsService) => {
+angular.module('blog').controller('details', ($scope, $log, $state, $document, $stateParams, PostsService) => {
 
   PostsService.get($stateParams.postId).then((res) => {
     $scope.post = res.data;
+    
+    document.title = $scope.post.title;
   }).catch((res) => {
     $log.error(res);
     $state.go('main.list');
