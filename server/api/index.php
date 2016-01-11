@@ -70,6 +70,9 @@ $router->route('posts-list', '/posts', function ()
     $post = R::findOne('post', ' slug = ? OR id = ?', [$slug, $slug]);
     
     if ($post->id) {
+        
+       
+        
         $next = R::findOne('post', ' id > ? AND isactive = 1 ORDER BY id ASC', [$post->id]);
         if ($next) {
             $post->next = $next->slug;
@@ -84,7 +87,14 @@ $router->route('posts-list', '/posts', function ()
         return new HttpStatus(HttpStatus::STATUS_404_NOT_FOUND);
     }
     
-    return new Json($post->export());
+    $result = $post->export();
+    
+    // tags
+    foreach( $post->sharedTagList as $tag ) {
+        $result['tags'][] = $tag->tag;
+    }
+    
+    return new Json($result);
 })
 /**
  * Add a single post
@@ -107,6 +117,19 @@ $router->route('posts-list', '/posts', function ()
         $post->slug = $request->getPost('post', 'slug');
         $post->created = R::isoDateTime(time());
         $post->changed = R::isoDateTime(time());
+        
+        // store tags
+        $tags = $request->getPost('post', 'tags');
+        foreach ($tags as $tag) {
+            $rbTag = R::findOne('tag', ' tag = ?', [$tag]);
+            if (!$rbTag) {
+                $rbTag = R::dispense('tag');
+                $rbTag->tag = $tag;
+                R::store($rbTag);
+            }
+            
+            $post->sharedTagList[] = $rbTag;
+        }
         
         R::store($post);
     } else {
@@ -139,6 +162,20 @@ $router->route('posts-list', '/posts', function ()
         $post->controller = $request->getPost('post', 'controller');
         $post->slug = $request->getPost('post', 'slug');
         $post->changed = R::isoDateTime(time());
+        
+        // store tags
+        $tags = $request->getPost('post', 'tags');
+        foreach ($tags as $tag) {
+            $rbTag = R::findOne('tag', ' tag = ?', [$tag]);
+            if (!$rbTag) {
+                $rbTag = R::dispense('tag');
+                $rbTag->tag = $tag;
+                R::store($rbTag);
+            }
+        
+            $post->sharedTagList[] = $rbTag;
+        }
+        
         R::store($post);
     }
     

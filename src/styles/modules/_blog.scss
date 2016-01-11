@@ -163,3 +163,40 @@
     text-align: right;
   }
 }
+
+.tag{
+  background-color: #4c4c4c;
+  border-radius: 0 3px 3px 0;
+  color: #FFFFFF;
+  display: inline-block;
+  height: 30px;
+  margin: 0 5px 5px 22px;
+  padding: 5px 17px 5px 5px;
+  position: relative;
+  transition: all 0.3s ease-in 0s;
+
+  &:before {
+    background: url("../img/tag-front.png") no-repeat scroll left center rgba(0, 0, 0, 0);
+    content: "";
+    height: 30px;
+    left: -22px;
+    position: absolute;
+    top: 0;
+    width: 22px;
+  }
+
+  &:hover .close{
+    opacity: 1;
+  }
+
+  .close {
+    cursor: pointer;
+    margin-right: 5px;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all 0.3s ease-in 0s;
+  }
+}

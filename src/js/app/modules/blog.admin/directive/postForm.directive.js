@@ -10,7 +10,7 @@ angular.module('blog.admin').directive('postForm', ($rootScope, $window, $filter
       post: '=',
       submit: '='
     },
-    link: (scope) => {
+    link: (scope, el, attrs, ngForm) => {
       let original;
       
       // watch for async changes
@@ -51,6 +51,17 @@ angular.module('blog.admin').directive('postForm', ($rootScope, $window, $filter
         }
       };
       
+      scope.removeTag = function(tag) {
+        if (angular.isArray(scope.post.tags)) {
+          let index = scope.post.tags.indexOf(tag);
+
+          if (index > -1) {
+            scope.post.tags.splice(index, 1);
+            scope.form.$setDirty();
+          }
+        }
+      };
+        
       /**
        * Prevent navigation when having changes
        * https://github.com/angular-ui/ui-router/wiki#state-change-events
