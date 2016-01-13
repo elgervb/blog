@@ -12,9 +12,10 @@ var reload  = browserSync.reload;
 * Start a PHP server. Note that this will require at least PHP 5.4 as it uses the built in server
 */
 gulp.task('serve', function() {
+	var port = argv.port || 4011
 	return require('gulp-connect-php').server({
 		base: './api',
-		port: 4011,
+		port: port,
 		keepalive: true
 	});
 });
@@ -23,8 +24,9 @@ gulp.task('serve', function() {
  * Start a PHP server and connect browser sync to it
  */
 gulp.task('start', ['serve'], function() {
+	var port = argv.port || 4011
     browserSync({
-        proxy: '127.0.0.1:4011',
+        proxy: '127.0.0.1:'+port,
         port: 4010,
         open: false,
         notify: true
