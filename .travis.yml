@@ -3,11 +3,17 @@ dist: trusty
 addons:
   chrome: stable
 
+sudo: required
+
 language: node_js
 
 node_js:
   - "8"
   - "10"
+
+# before_install:
+#  - # start your web application and listen on `localhost:4200`
+#  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost:4200
 
 script:
   - yarn build
