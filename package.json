@@ -6,7 +6,6 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
-    "test:CI": "ng test --browsers ChromeHeadless --watch false",
     "lint": "ng lint",
     "lint:scss": "stylelint **/**/*.scss --config stylelint.config.js",
     "e2e": "ng e2e"
