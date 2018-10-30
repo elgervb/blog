@@ -1,11 +1,11 @@
-import { Component, forwardRef, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, forwardRef, HostBinding, HostListener, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 /**
  * Implement the content editable property
  */
 @Component({
-  selector: 'app-editable',
+  selector: 'blog-editable',
   template: '{{value}}',
   styleUrls: ['./editable.component.scss'],
   providers: [{
@@ -24,9 +24,26 @@ export class EditableComponent implements OnInit, ControlValueAccessor {
   private onChange = (_: string) => { };
   private onTouched = () => { };
 
-  constructor() { }
+  constructor(private element: ElementRef) { }
 
-  ngOnInit() {
+  ngOnInit() { }
+
+  @HostBinding('attr.contenteditable')
+  get isEnabled() {
+    return !this.disabled;
+  }
+
+  @HostListener('click')
+  setEditable() {
+    this.setDisabledState(false);
+    setTimeout(() => this.element.nativeElement.focus(), 0);
+  }
+
+  @HostListener('document:click', ['$event'])
+  setReadonly(event?: UIEvent) {
+    if (event && !this.element.nativeElement.contains(event.target)) {
+      this.setDisabledState(true);
+    }
   }
 
   writeValue(value: string): void {
